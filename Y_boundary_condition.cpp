@@ -99,33 +99,19 @@ void Y_boundary_condition
 
 
 		  for (k = 2; k <= nz; k++) {
-			  
-			  rho = U1_[i][ny][k]*J[i][ny][k];
-			  U = U2_[i][ny][k]/U1_[i][ny][k];
-			  V = U3_[i][ny][k]/U1_[i][ny][k];
-			  W = U4_[i][ny][k]/U1_[i][ny][k];     
-			  VV = U*U+V*V+W*W;
-			  P = (U5_[i][ny][k]*J[i][ny][k]-0.5*rho*VV)*(K-1);
-			  temp = P/rho/R;
-			  
-			  V = -2.0*0.0023684-V;
-			  VV = U*U+V*V+W*W;
-
-			   U1_[i][nyy][k] = 1.1842/J[i][nyy][k];
-			   U2_[i][nyy][k] = 1.1842*0.0/J[i][nyy][k];
-			   U3_[i][nyy][k] = 1.1842*0.0/J[i][nyy][k];
-			   U4_[i][nyy][k] = 1.1842*0.0/J[i][nyy][k];
-			   U5_[i][nyy][k] = (101300.0/(K-1)+0.5*1.1842*0.0)/J[i][nyy][k];
-		  }
-
-
-		  for (k = 2; k <= nz; k++) {
 
 			   U1_[i][1][k] = U1_[i][2][k];
 			   U2_[i][1][k] = -U2_[i][2][k];
 			   U3_[i][1][k] = -U3_[i][2][k];
 			   U4_[i][1][k] = -U4_[i][2][k];
 			   U5_[i][1][k] = U5_[i][2][k];
+         
+         U1_[i][nyy][k] = U1_[i][ny][k];
+			   U2_[i][nyy][k] = -U2_[i][ny][k];
+			   U3_[i][nyy][k] = -U3_[i][ny][k];
+			   U4_[i][nyy][k] = -U4_[i][ny][k];
+			   U5_[i][nyy][k] = U5_[i][ny][k];
+         
 
 		  }	
 
@@ -155,6 +141,33 @@ void Y_boundary_condition
 					U3_[i][1][k] = -rho*V/J[i][1][k];
 					U4_[i][1][k] = -rho*W/J[i][1][k];
 					U5_[i][1][k] = (P/(K-1)+0.5*rho*VV)/J[i][1][k];
+          
+          
+          
+          
+          
+          rho = U1_[i][ny][k]*J[i][ny][k];
+					U = U2_[i][ny][k]/U1_[i][ny][k];
+					V = U3_[i][ny][k]/U1_[i][ny][k];
+					W = U4_[i][ny][k]/U1_[i][ny][k];     
+					VV = U*U+V*V+W*W;
+					P = (U5_[i][ny][k]*J[i][ny][k]-0.5*rho*VV)*(K-1);
+					temp = P/rho/R;
+
+					mu_E = mu_L*pow((temp/298.0592),1.5)*(298.0592+110.)/(temp+110.);
+
+					lambda_L = mu_E*Cv*K/Pr_L;
+
+					T = heat_flux/lambda_L/etdy[i][nyy][k]*deltaET+temp;
+
+					rho = P/R/T;
+
+					U1_[i][nyy][k] = rho/J[i][nyy][k];
+					U2_[i][nyy][k] = -rho*U/J[i][nyy][k];
+					U3_[i][nyy][k] = -rho*V/J[i][nyy][k];
+					U4_[i][nyy][k] = -rho*W/J[i][nyy][k];
+					U5_[i][nyy][k] = (P/(K-1)+0.5*rho*VV)/J[i][nyy][k];
+          
 
 			   }
 
@@ -162,8 +175,6 @@ void Y_boundary_condition
 		  }
 
 	 }
-
-
 
 
 

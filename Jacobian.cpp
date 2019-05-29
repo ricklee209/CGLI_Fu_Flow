@@ -73,29 +73,13 @@ double (*ztdz)[Y_m][Z_m] = new double[X_np][Y_m][Z_m]
 
 				etdx[i][j][k]=0;
 
-				if (j < (ny-ny_abs+1) ) {
-				
-					gamma = gamma1;
-					temp = (0.5*high)*(1-1./tanh(gamma)*tanh(gamma*(1-2*(j-1.5)*deltaET)));
-					
-					temp1 = (1-temp/(0.5*high))*tanh(gamma);
-					
-					temp2 = 1/cosh(gamma*(1-2*(j-1.5)*deltaET));
+        gamma = gamma1;
+        temp = (0.5*high)*(1-1./tanh(gamma)*tanh(gamma*(1-2*(j-1.5)*deltaET)));
+        
+        temp1 = (1-temp/(0.5*high))*tanh(gamma);
+        
+        temp2 = 1/cosh(gamma*(1-2*(j-1.5)*deltaET));
 
-					}
-					
-				else {
-				
-					gamma = gamma2;
-					temp = (0.5*high)*(1-1./tanh(gamma)*tanh(gamma*(1-2*(j-(ny-ny_abs)-0.5)*deltaET)))+high;
-					
-					temp1 = (3-temp/(0.5*high))*tanh(gamma);
-					
-					temp2 = 1/cosh(gamma*(1-2*(j-(ny-ny_abs)-0.5)*deltaET));
-
-					}	
-					
-				
 				
 				
 				etdy[i][j][k] = tanh(gamma)/(2*(0.5*high)*gamma*(1-temp1*temp1));
