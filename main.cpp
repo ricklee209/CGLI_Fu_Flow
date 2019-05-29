@@ -44,18 +44,18 @@ int main(int argc, char **argv)
 	int statistic_step = 1000;
 	int iteration_end_step = 50;
 	int output_step = 100;
-	int count = 1000;
+	int count = 10000;
 	int step;
 	
 	
-	int switch_initial = 1; // ---- 1 reading initial coniditon ---- //
+	int switch_initial = 0; // ---- 1 reading initial coniditon ---- //
 
-	int switch_output = 1;  // ---- 1 output grid file ---- //
+	int switch_output = 0;  // ---- 1 output grid file ---- //
 
 
 	
 	double e = 0.00002;
-	double deltaT = 0.0008;
+	double deltaT = 0.004;
 	double Ep = 1.;
 	double Roe_criterion = 0.007;
 	double E_high = 1.;
@@ -68,6 +68,14 @@ int main(int argc, char **argv)
 	double obs3 = 2.0;
 	double obs4 = 3.0;
 	double obs5 = 4.0;
+  
+  
+  
+	double obs01 = 0.1;
+	double obs02 = 0.2;
+	double obs03 = 0.4;
+	double obs04 = 0.6;
+	double obs05 = 0.8;
 	
 	nproc = np;
 
@@ -340,7 +348,16 @@ int X_np = gcount[myid]+6;    /**** How many cells in X-direction for each CPU *
 					  J_v,
 					  xidx_v,xidy_v,xidz_v,etdx_v,etdy_v,etdz_v,ztdx_v,ztdy_v,ztdz_v,
 					  MR1,MR2,MR3,MR4,MR5,ML1,ML2,ML3,ML4,ML5,EpY);
-					  
+					 
+     Statistic(myid,
+					  step,iteration, statistic_step,
+					  obs01, obs02, obs03, obs04, obs05,
+					  e,
+				      U1_,U2_,U3_,U4_,U5_,
+				      J,
+					  J_v,
+					  xidx_v,xidy_v,xidz_v,etdx_v,etdy_v,etdz_v,ztdx_v,ztdy_v,ztdz_v,
+					  MR1,MR2,MR3,MR4,MR5,ML1,ML2,ML3,ML4,ML5,EpY);
 			
 
 

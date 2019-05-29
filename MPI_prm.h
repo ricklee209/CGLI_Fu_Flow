@@ -2,7 +2,7 @@
 
 
 
-#define np 250
+#define np 8
 
 int nproc = np; // how many CPUs //
 

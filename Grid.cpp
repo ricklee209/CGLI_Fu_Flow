@@ -38,7 +38,7 @@ double (*Z_point)[Y_m][Z_m] = new double[X_np][Y_m][Z_m]
 
 	double temp;
 
-double gamma = 4.65;
+double gamma = 2.8;
 
 // ======================= //
 	istart = 0;            //
@@ -47,15 +47,6 @@ double gamma = 4.65;
 	
 
 //#pragma omp parallel for private(j,k,temp)
-	for (i = istart; i <= iend; i++) {
-		for (j = 2; j < nyy-ny_abs; j++) { 
-			for (k = 2; k < nzz; k++) {
-
-				Y_point[i][j][k] = (0.5*high)*(1-1./tanh(gamma)*tanh(gamma*(1-2*(j-1.5)*deltaET)));
-				
-			}
-		}
-	}  
 	
 
 if (myid == 0) {

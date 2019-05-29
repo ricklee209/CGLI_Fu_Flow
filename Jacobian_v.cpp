@@ -63,8 +63,8 @@ double (*ztdz)[Y_m][Z_m] = new double[X_np][Y_m][Z_m]
 	
 	
 	double gamma;
-	double gamma1 = 4.65;
-	double gamma2 = 4.65;
+	double gamma1 = 2.8;
+	double gamma2 = 2.5;
 	
 	
 //// ============================================ ////
@@ -125,30 +125,30 @@ double (*ztdz)[Y_m][Z_m] = new double[X_np][Y_m][Z_m]
 	}
 	
 
-// //// ============================================ ////
-			// istart = 2;							  ////	
-// //// ============================================ ////
-			// iend = gend[myid]-1;	     		  ////
-// //// ============================================ ////
+//// ============================================ ////
+			istart = 2;							  ////	
+//// ============================================ ////
+			iend = gend[myid]-1;	     		  ////
+//// ============================================ ////
 
-	// for (i = istart; i <=  iend; i++) {
-		// for (k = 1; k < nz; k++) {   
+	for (i = istart; i <=  iend; i++) {
+		for (k = 1; k < nz; k++) {   
 
 
-			// etdx_v[i][1][k]=etdx[i][1][k];
-			// etdy_v[i][1][k]=etdy[i][1][k];
-			// etdz_v[i][1][k]=etdz[i][1][k];
+			etdx_v[i][1][k]=etdx[i][1][k];
+			etdy_v[i][1][k]=etdy[i][1][k];
+			etdz_v[i][1][k]=etdz[i][1][k];
 			
-			// etdx_v[i][ny][k]=etdx[i][nyy][k];
-			// etdy_v[i][ny][k]=etdy[i][nyy][k];
-			// etdz_v[i][ny][k]=etdz[i][nyy][k];
+			etdx_v[i][ny][k]=etdx[i][nyy][k];
+			etdy_v[i][ny][k]=etdy[i][nyy][k];
+			etdz_v[i][ny][k]=etdz[i][nyy][k];
 			
-			// J_v[i][ny][k]=J[i][nyy][k];
+			J_v[i][ny][k]=J[i][nyy][k];
 
-			// J_v[i][1][k]=J[i][1][k];
+			J_v[i][1][k]=J[i][1][k];
 
-		// }
-	// }
+		}
+	}
 
 
 }

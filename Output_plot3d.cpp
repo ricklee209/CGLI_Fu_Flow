@@ -61,7 +61,7 @@ void Output_plot3d
 	int Nblock = 1;
 	
 	int nx_out = X_out;
-	int ny_out = Y_out-ny_abs;
+	int ny_out = Y_out;
 	int nz_out = Z_out;
 
 	double tempX,tempY,tempZ;
@@ -104,14 +104,8 @@ void Output_plot3d
 		for (j = 0; j < ny_out; j++) { 
 			for (k = 0; k < nz_out; k++) { 
 
-				if (j < Y_out-ny_abs)
 					Yout[i][j][k] = (0.5*high)*(1-1./tanh(gamma1)*tanh(gamma1*(1-2*(j+0.5)*deltaET)));
-				else {
-
-					Yout[i][j][k] = (0.5*high)*(1-1./tanh(gamma2)*tanh(gamma2*(1-2*(j-(ny_out-ny_abs)+0.5)*deltaET)))+high;
-
-				}
-
+				
 			}
 		}
 	}  

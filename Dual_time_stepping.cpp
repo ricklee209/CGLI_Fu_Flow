@@ -667,65 +667,65 @@ if (myid == 0) {
 // ------------------------------- Absorbing boundary condition ------------------------------- //
 
 			 
-// -------------------------------------------------------------------------------------------- //
-// ------------------------------- Upper wall Absorbing boundary condition ------------------------------- //
+// // -------------------------------------------------------------------------------------------- //
+// // ------------------------------- Upper wall Absorbing boundary condition ------------------------------- //
 
-//	 double C_plan;
+// //	 double C_plan;
 
-	 double V_in_0 = 1.15;
+	 // double V_in_0 = 1.15;
 	
-	 Sigma_in_0 = 0.035;
+	 // Sigma_in_0 = 0.035;
 	
-	 double  V_in_1;
+	 // double  V_in_1;
 	
-//	 double  Sigma_in;
+// //	 double  Sigma_in;
 	 
-	 double ny_buffer = 5;
+	 // double ny_buffer = 5;
 
-//// ============================================ ////
-			istart =  3;	            		  	
-//// ============================================ ////
-			iend = gend[myid];		    		  
-//// ============================================ ////
+// //// ============================================ ////
+			// istart =  3;	            		  	
+// //// ============================================ ////
+			// iend = gend[myid];		    		  
+// //// ============================================ ////
 
-	for (i = istart ; i <= iend; i++) {
-		 #pragma omp parallel for private(C_plan,beta,k,rho,u,v,w,VV,P,V_in_1,Sigma_in)
-				 for (j = ny-ny_buffer+1; j <= ny; j++) {
-					 for (k = 2; k <= nz; k++) {
-						 rho = U1_[i][j][k]*J[i][j][k];
-						 u = U2_[i][j][k]/U1_[i][j][k];
-						 v = U3_[i][j][k]/U1_[i][j][k];
-						 w = U4_[i][j][k]/U1_[i][j][k];     
-						 VV = u*u+v*v+w*w;
-						 P = (U5_[i][j][k]*J[i][j][k]-0.5*rho*VV)*(K-1);
-						 C = K*P/rho; 
+	// for (i = istart ; i <= iend; i++) {
+		 // #pragma omp parallel for private(C_plan,beta,k,rho,u,v,w,VV,P,V_in_1,Sigma_in)
+				 // for (j = ny-ny_buffer+1; j <= ny; j++) {
+					 // for (k = 2; k <= nz; k++) {
+						 // rho = U1_[i][j][k]*J[i][j][k];
+						 // u = U2_[i][j][k]/U1_[i][j][k];
+						 // v = U3_[i][j][k]/U1_[i][j][k];
+						 // w = U4_[i][j][k]/U1_[i][j][k];     
+						 // VV = u*u+v*v+w*w;
+						 // P = (U5_[i][j][k]*J[i][j][k]-0.5*rho*VV)*(K-1);
+						 // C = K*P/rho; 
 						 
-//						  /* preconditioning */
-						 beta = max(VV/C,e);
+// //						  /* preconditioning */
+						 // beta = max(VV/C,e);
 
-						 C_plan = 0.5*sqrt(v*v*(beta-1)*(beta-1)+4*beta*C);
+						 // C_plan = 0.5*sqrt(v*v*(beta-1)*(beta-1)+4*beta*C);
 						
-						 V_in_1 = pow( (j-(ny-ny_buffer)-0.5)/ny_buffer, 3.0 )* V_in_0*C_plan;
+						 // V_in_1 = pow( (j-(ny-ny_buffer)-0.5)/ny_buffer, 3.0 )* V_in_0*C_plan;
 						
-						 Sigma_in = Sigma_in_0*V_in_1/high;
-						
-						
-						 Residual1[i][j][k] = -(V_in_1*( U1_[i][j][k]*J[i][j][k]-U1_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho-1.1842))+Residual1[i][j][k];
-						 Residual2[i][j][k] = -(V_in_1*( U2_[i][j][k]*J[i][j][k]-U2_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho*u))+Residual2[i][j][k];
-						 Residual3[i][j][k] = -(V_in_1*( U3_[i][j][k]*J[i][j][k]-U3_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho*v))+Residual3[i][j][k];
-						 Residual4[i][j][k] = -(V_in_1*( U4_[i][j][k]*J[i][j][k]-U4_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho*w))+Residual4[i][j][k];
-						 Residual5[i][j][k] = -(V_in_1*( U5_[i][j][k]*J[i][j][k]-U5_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(U5_[i][j][k]*J[i][j][k]-253250.0))+Residual5[i][j][k];
+						 // Sigma_in = Sigma_in_0*V_in_1/high;
 						
 						
-					 }
-				 }
+						 // Residual1[i][j][k] = -(V_in_1*( U1_[i][j][k]*J[i][j][k]-U1_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho-1.1842))+Residual1[i][j][k];
+						 // Residual2[i][j][k] = -(V_in_1*( U2_[i][j][k]*J[i][j][k]-U2_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho*u))+Residual2[i][j][k];
+						 // Residual3[i][j][k] = -(V_in_1*( U3_[i][j][k]*J[i][j][k]-U3_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho*v))+Residual3[i][j][k];
+						 // Residual4[i][j][k] = -(V_in_1*( U4_[i][j][k]*J[i][j][k]-U4_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho*w))+Residual4[i][j][k];
+						 // Residual5[i][j][k] = -(V_in_1*( U5_[i][j][k]*J[i][j][k]-U5_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(U5_[i][j][k]*J[i][j][k]-253250.0))+Residual5[i][j][k];
+						
+						
+					 // }
+				 // }
 
-	 #pragma omp barrier
+	 // #pragma omp barrier
 
-		 }		
+		 // }		
 
-// -------------------------------------------------------------------------------------------- //
-// ------------------------------- Upper wall Absorbing boundary condition End ------------------------------- //
+// // -------------------------------------------------------------------------------------------- //
+// // ------------------------------- Upper wall Absorbing boundary condition End ------------------------------- //
 
 
 //// ============================================ ////

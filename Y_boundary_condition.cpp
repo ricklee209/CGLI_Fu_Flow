@@ -143,9 +143,6 @@ void Y_boundary_condition
 					U5_[i][1][k] = (P/(K-1)+0.5*rho*VV)/J[i][1][k];
           
           
-          
-          
-          
           rho = U1_[i][ny][k]*J[i][ny][k];
 					U = U2_[i][ny][k]/U1_[i][ny][k];
 					V = U3_[i][ny][k]/U1_[i][ny][k];
@@ -168,7 +165,7 @@ void Y_boundary_condition
 					U4_[i][nyy][k] = -rho*W/J[i][nyy][k];
 					U5_[i][nyy][k] = (P/(K-1)+0.5*rho*VV)/J[i][nyy][k];
           
-
+          
 			   }
 
 
