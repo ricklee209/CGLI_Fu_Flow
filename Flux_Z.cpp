@@ -268,8 +268,7 @@ double (*EpZ)[Y_m][Z_m] = new double[X_np][Y_m][Z_m]
 
 				_VV = _u*_u+_v*_v+_w*_w;
 				iP = (ML5[i][j][k]-0.5*_rho*_VV)*(K-1);
-				_T = _P/_rho;
-				iC = K*_P/_rho;
+				iC = K*iP/_rho;
 				_H = 0.5*_VV+iC/(K-1);
 
 				/* right parameter */
