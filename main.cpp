@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 
 	int statistic_step = 1000;
 	int iteration_end_step = 50;
-	int output_step = 100;
+	int output_step = 200;
 	int count = 10000;
 	int step;
 	

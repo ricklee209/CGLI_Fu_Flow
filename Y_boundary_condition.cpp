@@ -101,15 +101,15 @@ void Y_boundary_condition
 		  for (k = 2; k <= nz; k++) {
 
 			   U1_[i][1][k] = U1_[i][2][k];
-			   U2_[i][1][k] = -U2_[i][2][k];
-			   U3_[i][1][k] = -U3_[i][2][k];
-			   U4_[i][1][k] = -U4_[i][2][k];
+			   U2_[i][1][k] = U2_[i][2][k];
+			   U3_[i][1][k] = U3_[i][2][k];
+			   U4_[i][1][k] = U4_[i][2][k];
 			   U5_[i][1][k] = U5_[i][2][k];
          
          U1_[i][nyy][k] = U1_[i][ny][k];
-			   U2_[i][nyy][k] = -U2_[i][ny][k];
-			   U3_[i][nyy][k] = -U3_[i][ny][k];
-			   U4_[i][nyy][k] = -U4_[i][ny][k];
+			   U2_[i][nyy][k] = U2_[i][ny][k];
+			   U3_[i][nyy][k] = U3_[i][ny][k];
+			   U4_[i][nyy][k] = U4_[i][ny][k];
 			   U5_[i][nyy][k] = U5_[i][ny][k];
          
 
