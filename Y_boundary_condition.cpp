@@ -128,12 +128,14 @@ void Y_boundary_condition
 					P = (U5_[i][2][k]*J[i][2][k]-0.5*rho*VV)*(K-1);
 					temp = P/rho/R;
 
-					mu_E = mu_L*pow((temp/298.0592),1.5)*(298.0592+110.)/(temp+110.);
+					// mu_E = mu_L*pow((temp/298.0592),1.5)*(298.0592+110.)/(temp+110.);
 
-					lambda_L = mu_E*Cv*K/Pr_L;
+					// lambda_L = mu_E*Cv*K/Pr_L;
 
-					T = heat_flux/lambda_L/etdy[i][1][k]*deltaET+temp;
+					// T = heat_flux/lambda_L/etdy[i][1][k]*deltaET+temp;
 
+          T = 310.0592;
+          
 					rho = P/R/T;
 
 					U1_[i][1][k] = rho/J[i][1][k];
@@ -151,12 +153,14 @@ void Y_boundary_condition
 					P = (U5_[i][ny][k]*J[i][ny][k]-0.5*rho*VV)*(K-1);
 					temp = P/rho/R;
 
-					mu_E = mu_L*pow((temp/298.0592),1.5)*(298.0592+110.)/(temp+110.);
+					// mu_E = mu_L*pow((temp/298.0592),1.5)*(298.0592+110.)/(temp+110.);
 
-					lambda_L = mu_E*Cv*K/Pr_L;
+					// lambda_L = mu_E*Cv*K/Pr_L;
 
-					T = heat_flux/lambda_L/etdy[i][nyy][k]*deltaET+temp;
+					// T = -0.5*heat_flux/lambda_L/etdy[i][nyy][k]*deltaET+temp;
 
+          T = 298.0592;
+          
 					rho = P/R/T;
 
 					U1_[i][nyy][k] = rho/J[i][nyy][k];
