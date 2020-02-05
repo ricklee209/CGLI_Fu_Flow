@@ -41,21 +41,21 @@ int main(int argc, char **argv)
 	
 #include "Resolution.h"
 
-	int statistic_step = 1000;
+	int statistic_step = 4000;
 	int iteration_end_step = 50;
-	int output_step = 1000;
+	int output_step = 500;
 	int count = 60000;
 	int step;
 	
 	
 	int switch_initial = 0; // ---- 1 reading initial coniditon ---- //
 
-	int switch_output = 1;  // ---- 1 output grid file ---- //
+	int switch_output = 0;  // ---- 1 output grid file ---- //
 
 
 	
 	double e = 0.0001;
-	double deltaT = 0.01;
+	double deltaT = 0.002;
 	double Ep = 1.;
 	double Roe_criterion = 0.007;
 	double E_high = 1.;
@@ -63,11 +63,11 @@ int main(int argc, char **argv)
 
 	double heat_flux = 104;
 
-	double obs1 = 0.205;  // at Inlet : nx_inlet+2
-	double obs2 = 0.458;
-	double obs3 = 0.964;
-	double obs4 = 1.217;
-  double obs5 = 1.47;    // at Outlet : nx-nx_out+2
+	double obs1 = 0.06;  // at Inlet : nx_inlet+2
+	double obs2 = 0.16;
+	double obs3 = 0.26;
+	double obs4 = 0.36;
+  double obs5 = 0.46;    // at Outlet : nx-nx_out+2
 	
 	nproc = np;
 

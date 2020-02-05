@@ -48,8 +48,8 @@ double (*ztdz)[Y_m][Z_m] = new double[X_np][Y_m][Z_m]
 	
 	double gamma;
 	double gamma1 = 2.8;
-	double gamma2 = 2.5;
 	
+  
 //// ============================================ ////
 		if (myid ==0) istart = 3;		          ////
 		else istart = 0;			              ////
