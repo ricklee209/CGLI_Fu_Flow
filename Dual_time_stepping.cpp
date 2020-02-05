@@ -537,11 +537,11 @@ if (myid == 0) {
 
 	double C_plan;
 
-	double U_in_0 = 1.15;
+	double U_in_0 = 1.0;
 	
 	double Sigma_in_0 = 0.035;
 
-	double U_out_0 = 1.15;
+	double U_out_0 = 1.0;
 	
 	double Sigma_out_0 = 1.25;
 	

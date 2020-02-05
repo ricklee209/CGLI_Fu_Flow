@@ -1,14 +1,14 @@
 
 
 
-#define nx_inlet  60
-#define nx_outlet 90
+#define nx_inlet  100
+#define nx_outlet 150
 
-#define X_out 550 /**** X_out+nx_in+nx_out ****/  
+#define X_out 650 /**** X_out+nx_in+nx_out ****/  
 #define Y_out 200  
 #define Z_out 100     
 
-#define X_m 554   /**** X_out+4 ****/
+#define X_m 654   /**** X_out+4 ****/
 #define Y_m 204   /**** Y_out+4 ****/
 #define Z_m 104   /**** Z_out+4 ****/
 

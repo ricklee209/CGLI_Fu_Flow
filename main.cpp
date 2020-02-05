@@ -63,11 +63,11 @@ int main(int argc, char **argv)
 
 	double heat_flux = 104;
 
-	double obs1 = 0.06;  // at Inlet : nx_inlet+2
-	double obs2 = 0.16;
-	double obs3 = 0.26;
-	double obs4 = 0.36;
-  double obs5 = 0.46;    // at Outlet : nx-nx_out+2
+	double obs1 = 0.1;  // at Inlet : nx_inlet+2
+	double obs2 = 0.2;
+	double obs3 = 0.3;
+	double obs4 = 0.4;
+  double obs5 = 0.5;    // at Outlet : nx-nx_out+2
 	
 	nproc = np;
 
