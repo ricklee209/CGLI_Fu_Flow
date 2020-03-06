@@ -902,6 +902,49 @@ double (*EpY)[Y_m][Z_m] = new double[X_np][Y_m][Z_m]
 );
 
 
+
+
+void Statistic_TK
+(
+// ============================================================================ //
+int myid,
+int step,
+int iteration,
+int statistic_step,
+
+double obs1,
+double obs2,
+double obs3,
+double obs4,
+double obs5,
+
+double (*U1_)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*U2_)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*U3_)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*U4_)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*U5_)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+
+double (*J)[Y_m][Z_m] = new double[X_np][Y_m][Z_m],
+
+double (*xidy_u)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*etdy_u)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*ztdy_u)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+
+double (*MR1)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*MR2)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*MR3)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*MR4)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*MR5)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+
+double (*ML1)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*ML2)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*ML3)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*ML4)[Y_m][Z_m] = new double[X_np][Y_m][Z_m], 
+double (*ML5)[Y_m][Z_m] = new double[X_np][Y_m][Z_m]
+// ============================================================================ //
+);
+
+
 void Filter
 (
 // ============================================================================ //

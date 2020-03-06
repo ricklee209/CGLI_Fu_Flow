@@ -1,4 +1,4 @@
-OBJS = main.o Jacobian.o Jacobian_u.o Jacobian_v.o Jacobian_w.o Initial_condition.o Driven_force.o X_boundary_condition.o Y_boundary_condition.o Z_boundary_condition.o Flux_X.o Flux_Y.o Flux_Z.o Viscous_terms.o Dual_time_stepping.o DPLUSGS.o Output.o Output_plot3d.o Statistic.o Hyperplane.o Grid.o Filter.o
+OBJS = main.o Jacobian.o Jacobian_u.o Jacobian_v.o Jacobian_w.o Initial_condition.o Driven_force.o X_boundary_condition.o Y_boundary_condition.o Z_boundary_condition.o Flux_X.o Flux_Y.o Flux_Z.o Viscous_terms.o Dual_time_stepping.o DPLUSGS.o Output.o Output_plot3d.o Statistic.o Statistic_TK.o Hyperplane.o Grid.o Filter.o
 
 HEAD = Resolution.h ijk.h prm.h MPI_prm.h Mpi_division.h
 
@@ -48,6 +48,8 @@ Output.o: $(HEAD)
 Output_plot3d.o: $(HEAD)
 
 Statistic.o: $(HEAD) Viscous_terms.h
+
+Statistic_TK.o: $(HEAD) Viscous_terms.h
 
 Hyperplane.o: $(HEAD) Viscous_terms.h
 

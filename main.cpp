@@ -340,6 +340,14 @@ int X_np = gcount[myid]+6;    /**** How many cells in X-direction for each CPU *
 					  J_v,
 					  xidx_v,xidy_v,xidz_v,etdx_v,etdy_v,etdz_v,ztdx_v,ztdy_v,ztdz_v,
 					  MR1,MR2,MR3,MR4,MR5,ML1,ML2,ML3,ML4,ML5,EpY);
+          
+      Statistic_TK(myid,
+					  step,iteration, statistic_step,
+            obs1, obs2, obs3, obs4, obs5,
+				      U1_,U2_,U3_,U4_,U5_,
+				      J,
+					  xidy_u,etdy_u,ztdy_u,
+					  MR1,MR2,MR3,MR4,MR5,ML1,ML2,ML3,ML4,ML5);
 					 
 
 
