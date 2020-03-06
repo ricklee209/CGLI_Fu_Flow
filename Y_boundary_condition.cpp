@@ -134,7 +134,9 @@ void Y_boundary_condition
 
 					// T = heat_flux/lambda_L/etdy[i][1][k]*deltaET+temp;
 
-          T = 306.0592;
+          //T = 328.0592;  // +30
+          
+          T = 343.0592;
           
 					rho = P/R/T;
 
@@ -159,7 +161,9 @@ void Y_boundary_condition
 
 					// T = -0.5*heat_flux/lambda_L/etdy[i][nyy][k]*deltaET+temp;
 
-          T = 294.0592;
+          //T = 283.0592;  // -15
+          
+          T = 298.0592;
           
 					rho = P/R/T;
 

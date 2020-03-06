@@ -41,9 +41,9 @@ int main(int argc, char **argv)
 	
 #include "Resolution.h"
 
-	int statistic_step = 4000;
+	int statistic_step = 5000;
 	int iteration_end_step = 50;
-	int output_step = 500;
+	int output_step = 5000;
 	int count = 60000;
 	int step;
 	
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 
 	
 	double e = 0.0001;
-	double deltaT = 0.002;
+	double deltaT = 0.0025;
 	double Ep = 1.;
 	double Roe_criterion = 0.007;
 	double E_high = 1.;
