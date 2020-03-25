@@ -194,11 +194,11 @@ double (*J_v)[Y_m][Z_m] = new double[X_np][Y_m][Z_m]
 	double DN = 1./(X_out*Y_out*Z_out);
 
 	double et1,et2,et3,et4,et5;
-	
-	double z1 = 0.0;
-	double DZ = 1./(high*deltaZT*Z_out);
-	
-	double targetU;
+
+                 
+                                     
+ 
+                
 
 
 	if (myid == 0) {
@@ -503,32 +503,32 @@ double (*J_v)[Y_m][Z_m] = new double[X_np][Y_m][Z_m]
 // ------------------------------- Y_Absorbing boundary condition ------------------------------- //		
 // -------------------------------------------------------------------------------------------- //
 
-		MPI_Comm comm;
-		comm=MPI_COMM_WORLD;
-		MPI_Status istat[8];
-	  
-if (myid == 0) {
-	//	#pragma omp parallel for private(k)	reduction(+:z1)
-		for (j = 2; j <= nyy; j++) {
-			for (k = 2; k <= nzz; k++) {
+                
+                      
+                      
+   
+                
+                                                       
+                              
+                               
 
-				U = U2_[3][j][k]/U1_[3][j][k];
-				
-				z1 = z1+U*deltaET/etdy[3][j][k]*deltaZT;
-				
-			}
-		}
-	}
-	
-	targetU = z1*DZ;
-	
-	icount = 1;
-	
-	iroot = 0;
-	
-	MPI_Bcast ( (void *)&targetU, icount, MPI_DOUBLE, iroot, comm);
+                                  
+    
+                                            
+    
+    
+   
+  
+ 
+                 
+ 
+            
+ 
+           
 
-	// printf("%f\t",targetU);
+                                                                
+
+                           
 
 
 
@@ -537,11 +537,11 @@ if (myid == 0) {
 
 	double C_plan;
 
-	double U_in_0 = 1.0;
+	double U_in_0 = 1.15;
 	
 	double Sigma_in_0 = 0.035;
 
-	double U_out_0 = 1.0;
+	double U_out_0 = 1.15;
 	
 	double Sigma_out_0 = 1.25;
 	
@@ -648,10 +648,10 @@ if (myid == 0) {
 					
 					
 					Residual1[i][j][k] = -U_out_1*( U1_[i][j][k]*J[i][j][k]-U1_[i-1][j][k]*J[i-1][j][k] )/deltaXI-Sigma_out*(rho-1.1842);
-					Residual2[i][j][k] = -U_out_1*( U2_[i][j][k]*J[i][j][k]-U2_[i-1][j][k]*J[i-1][j][k] )/deltaXI-Sigma_out*(rho*u-1.1842*targetU);
+					Residual2[i][j][k] = -U_out_1*( U2_[i][j][k]*J[i][j][k]-U2_[i-1][j][k]*J[i-1][j][k] )/deltaXI-Sigma_out*(rho*u);
 					Residual3[i][j][k] = -U_out_1*( U3_[i][j][k]*J[i][j][k]-U3_[i-1][j][k]*J[i-1][j][k] )/deltaXI-Sigma_out*(rho*v);
 					Residual4[i][j][k] = -U_out_1*( U4_[i][j][k]*J[i][j][k]-U4_[i-1][j][k]*J[i-1][j][k] )/deltaXI-Sigma_out*(rho*w);
-					Residual5[i][j][k] = -U_out_1*( U5_[i][j][k]*J[i][j][k]-U5_[i-1][j][k]*J[i-1][j][k] )/deltaXI-Sigma_out*(U5_[i][j][k]*J[i][j][k]-253250.0-0.5*1.1842*targetU*targetU);
+					Residual5[i][j][k] = -U_out_1*( U5_[i][j][k]*J[i][j][k]-U5_[i-1][j][k]*J[i-1][j][k] )/deltaXI-Sigma_out*(U5_[i][j][k]*J[i][j][k]-253250.0);
 					
 					
 					
@@ -666,66 +666,66 @@ if (myid == 0) {
 // -------------------------------------------------------------------------------------------- //
 // ------------------------------- Absorbing boundary condition ------------------------------- //
 
-			 
-// // -------------------------------------------------------------------------------------------- //
-// // ------------------------------- Upper wall Absorbing boundary condition ------------------------------- //
+    
+                                                                                                     
+                                                                                                                
 
-// //	 double C_plan;
+                     
 
-	 // double V_in_0 = 1.15;
-	
-	 // Sigma_in_0 = 0.035;
-	
-	 // double  V_in_1;
-	
-// //	 double  Sigma_in;
-	 
-	 // double ny_buffer = 5;
+                          
 
-// //// ============================================ ////
-			// istart =  3;	            		  	
-// //// ============================================ ////
-			// iend = gend[myid];		    		  
-// //// ============================================ ////
+                        
 
-	// for (i = istart ; i <= iend; i++) {
-		 // #pragma omp parallel for private(C_plan,beta,k,rho,u,v,w,VV,P,V_in_1,Sigma_in)
-				 // for (j = ny-ny_buffer+1; j <= ny; j++) {
-					 // for (k = 2; k <= nz; k++) {
-						 // rho = U1_[i][j][k]*J[i][j][k];
-						 // u = U2_[i][j][k]/U1_[i][j][k];
-						 // v = U3_[i][j][k]/U1_[i][j][k];
-						 // w = U4_[i][j][k]/U1_[i][j][k];     
-						 // VV = u*u+v*v+w*w;
-						 // P = (U5_[i][j][k]*J[i][j][k]-0.5*rho*VV)*(K-1);
-						 // C = K*P/rho; 
-						 
-// //						  /* preconditioning */
-						 // beta = max(VV/C,e);
+                    
 
-						 // C_plan = 0.5*sqrt(v*v*(beta-1)*(beta-1)+4*beta*C);
-						
-						 // V_in_1 = pow( (j-(ny-ny_buffer)-0.5)/ny_buffer, 3.0 )* V_in_0*C_plan;
-						
-						 // Sigma_in = Sigma_in_0*V_in_1/high;
-						
-						
-						 // Residual1[i][j][k] = -(V_in_1*( U1_[i][j][k]*J[i][j][k]-U1_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho-1.1842))+Residual1[i][j][k];
-						 // Residual2[i][j][k] = -(V_in_1*( U2_[i][j][k]*J[i][j][k]-U2_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho*u))+Residual2[i][j][k];
-						 // Residual3[i][j][k] = -(V_in_1*( U3_[i][j][k]*J[i][j][k]-U3_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho*v))+Residual3[i][j][k];
-						 // Residual4[i][j][k] = -(V_in_1*( U4_[i][j][k]*J[i][j][k]-U4_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(rho*w))+Residual4[i][j][k];
-						 // Residual5[i][j][k] = -(V_in_1*( U5_[i][j][k]*J[i][j][k]-U5_[i][j+1][k]*J[i][j+1][k] )*etdy[i][j][k]/deltaET+Sigma_in*(U5_[i][j][k]*J[i][j][k]-253250.0))+Residual5[i][j][k];
-						
-						
-					 // }
-				 // }
+                        
 
-	 // #pragma omp barrier
+                          
 
-		 // }		
+                                                         
+                                    
+                                                         
+                                  
+                                                         
 
-// // -------------------------------------------------------------------------------------------- //
-// // ------------------------------- Upper wall Absorbing boundary condition End ------------------------------- //
+                                       
+                                                                                    
+                                                
+                                    
+                                        
+                                        
+                                        
+                                             
+                           
+                                                         
+                       
+       
+                                  
+                             
+
+                                                            
+      
+                                                                               
+      
+                                            
+      
+      
+                                                                                                                                                                
+                                                                                                                                                           
+                                                                                                                                                           
+                                                                                                                                                           
+                                                                                                                                                                                      
+      
+      
+          
+         
+
+                        
+
+         
+
+                                                                                                     
+                                                                                                                    
 
 
 //// ============================================ ////
@@ -1781,7 +1781,7 @@ f\
 	e4 = sqrt(e4)*DN;
 	e5 = sqrt(e5)*DN;
 	
-//	MPI_Comm comm;
+	MPI_Comm comm;
 	comm=MPI_COMM_WORLD;
 	
 	MPI_Allreduce ((void*)&e1, (void*)&*er1, 1, MPI_DOUBLE, MPI_SUM, comm );
