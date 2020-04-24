@@ -13,7 +13,7 @@ double f = 0.5993;
 double Q0 = 2.07;
 double Qold = Q0;
 
-double high = 0.05;
+double high = 0.1;
 
 double psi = 0.001;
 
